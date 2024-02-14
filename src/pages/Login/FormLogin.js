@@ -39,12 +39,12 @@ export default () => {
                 <div className="card-body">
                   <form role="form">
                     <div className="mb-3">
-                      <input type="email" 
+                      <input type="text" 
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
                         className="form-control form-control-lg" 
-                        placeholder="E-mail" aria-label="E-mail" />
+                        placeholder="Usuário"  />
                     </div>
                     <div className="mb-3">
                       <input type="password" 
