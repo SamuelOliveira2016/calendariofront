@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import AddPessoa from './AddPessoa';
-import AddVinculo from './AddVinculo';
-import AddHoraTrabProf from './AddHoraTrabProf';
+import AddPessoa from './pages/Pessoas/AddPessoa';
+import AddVinculo from './pages/Pessoas/AddVinculo';
+import AddHoraTrabProf from './pages/Pessoas/AddHoraTrabProf';
 
 const PessoaRoutes = () => {
     return (

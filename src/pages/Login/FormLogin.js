@@ -48,7 +48,7 @@ export default () => {
                     </div>
                     <div className="mb-3">
                       <input type="password" 
-                        value={username}
+                        value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                         className="form-control form-control-lg" 
@@ -60,6 +60,9 @@ export default () => {
                        style={{backgroundColor: "#D10E0E", color: "#fff"}}
                        className="btn btn-lg btn-lg w-100 mt-4 mb-0">Acessar</button>
                     </div>
+
+                    {/* b */}
+                    
                   </form>
                 </div>
               </div>
