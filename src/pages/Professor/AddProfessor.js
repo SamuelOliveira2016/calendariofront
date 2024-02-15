@@ -12,7 +12,7 @@ const AddProfessor = () => {
     const [pessoas, setPessoas] = useState([]);
     
     useEffect(() => {
-        axios.get('http://10.92.6.122:8000/api/pessoas/')
+        axios.get('http://localhost:8000/api/pessoas/')
             .then(res => setPessoas(res.data))
             .catch(err => console.error("Erro ao carregar pessoas", err));
 
@@ -44,7 +44,7 @@ const AddProfessor = () => {
         console.log("Enviando professor:", professor); // Depuração
 
         try {
-            const response = await axios.post('http://10.92.6.122:8000/api/professores/', professor);
+            const response = await axios.post('http://localhost:8000/api/professores/', professor);
             console.log("Professor adicionado:", response.data);
         } catch (error) {
             console.error('Erro ao adicionar professor', error);

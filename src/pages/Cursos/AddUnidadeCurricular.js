@@ -17,7 +17,7 @@ const AddUnidadeCurricular = () => {
     const [cursos, setCursos] = useState([]);
 
     useEffect(() => {
-        axios.get('http://10.92.6.122:8000/api/cursos/')
+        axios.get('http://localhost:8000/api/cursos/')
             .then(res => setCursos(res.data))
             .catch(err => console.error("Erro ao carregar cursos", err));
     }, []);
@@ -56,7 +56,7 @@ const AddUnidadeCurricular = () => {
             return;
         }
         try {
-            const response = await axios.post('http://10.92.6.122:8000/api/unidadecurricular/', unidadeCurricular);
+            const response = await axios.post('http://localhost:8000/api/unidadecurricular/', unidadeCurricular);
             console.log("Unidade Curricular adicionada:", response.data);
         } catch (error) {
             console.error('Erro ao adicionar unidade curricular', error);

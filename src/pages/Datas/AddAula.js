@@ -14,14 +14,14 @@ const AddAula = () => {
     const [horasDetalhes, setHorasDetalhes] = useState({});
 
     useEffect(() => {
-        axios.get('http://10.92.6.122:8000/api/curso-uc-professor/')
+        axios.get('http://localhost:8000/api/curso-uc-professor/')
             .then(res => {
                 console.log("Cursos UC Professores carregados:", res.data);
                 setCursoUCProfessores(res.data);
             })
             .catch(err => console.log(err));
 
-        axios.get('http://10.92.6.122:8000/api/infraestruturas/')
+        axios.get('http://localhost:8000/api/infraestruturas/')
             .then(res => {
                 setInfraestruturas(res.data);
             })
@@ -57,7 +57,7 @@ const AddAula = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://10.92.6.122:8000/api/aulas/', aula);
+            await axios.post('http://localhost:8000/api/aulas/', aula);
             // Tratamento da resposta - ex.: exibir mensagem de sucesso
         } catch (error) {
             console.error('Erro ao enviar os dados', error);

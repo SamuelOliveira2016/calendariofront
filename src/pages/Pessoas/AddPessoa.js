@@ -16,7 +16,7 @@ const AddPessoa = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://10.92.6.122:8000/api/pessoas/', pessoa);
+            await axios.post('http://localhost:8000/api/pessoas/', pessoa);
             // Adicione a lógica para lidar com a resposta bem-sucedida
         } catch (error) {
             console.error('Houve um erro ao enviar os dados', error);

@@ -6,7 +6,7 @@ const AddTipoCurso = () => {
     const [tipoCursoSelecionado, setTipoCursoSelecionado] = useState('');
 
     useEffect(() => {
-        axios.get('http://10.92.6.122:8000/api/tipocurso/')
+        axios.get('http://localhost:8000/api/tipocurso/')
             .then(res => {
                 setTiposCurso(res.data);
             })
@@ -16,7 +16,7 @@ const AddTipoCurso = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://10.92.6.122:8000/api/tipocurso/', { nome_tipo_curso: tipoCursoSelecionado });
+            const response = await axios.post('http://localhost:8000/api/tipocurso/', { nome_tipo_curso: tipoCursoSelecionado });
             console.log(response.data);
             setTipoCursoSelecionado('');
         } catch (error) {

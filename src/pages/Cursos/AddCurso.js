@@ -14,13 +14,13 @@ const AddCurso = () => {
 
     useEffect(() => {
         // Carregar tipos de curso
-        axios.get('http://10.92.6.122:8000/api/tipocurso/')
+        axios.get('http://localhost:8000/api/tipocurso/')
             .then(res => setTiposCurso(res.data))
 
             .catch(err => console.error("Erro ao carregar tipos de curso", err));
 
         // Carregar áreas tecnológicas
-        axios.get('http://10.92.6.122:8000/api/areastecnologicas/')
+        axios.get('http://localhost:8000/api/areastecnologicas/')
             .then(res => setAreasTecnologicas(res.data))
             .catch(err => console.error("Erro ao carregar áreas tecnológicas", err));
     }, []);
@@ -36,7 +36,7 @@ const AddCurso = () => {
         console.log('Enviando dados do curso:', curso); // Aqui
 
         try {
-            await axios.post('http://10.92.6.122:8000/api/cursos/', curso);
+            await axios.post('http://localhost:8000/api/cursos/', curso);
             // Tratar sucesso
         } catch (error) {
             console.error('Erro ao adicionar curso', error);

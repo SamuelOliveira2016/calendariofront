@@ -9,7 +9,7 @@ function BigCalendar() {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
-        axios.get('http://10.92.6.122:8000/api/calendario_aulas/')
+        axios.get('http://localhost:8000/api/calendario_aulas/')
             .then(response => {
                 const eventosFormatados = response.data.map(evento => ({
                     title: evento.aula.curso_uc_professor.curso.nome,

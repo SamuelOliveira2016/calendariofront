@@ -24,7 +24,7 @@ const AddHoraTrabProf = () => {
     ];
 
     useEffect(() => {
-        axios.get('http://10.92.6.122:8000/api/pessoas/')
+        axios.get('http://localhost:8000/api/pessoas/')
             .then(res => {
                 console.log("Pessoas carregadas:", res.data); 
                 setPessoas(res.data);
@@ -54,7 +54,7 @@ const AddHoraTrabProf = () => {
         e.preventDefault();
         console.log("Enviando dados:", horatrabProf); 
         try {
-            const response = await axios.post('http://10.92.6.122:8000/api/horatrabprof/', horatrabProf);
+            const response = await axios.post('http://localhost:8000/api/horatrabprof/', horatrabProf);
             console.log(response.data);
             // Resetar o formulário ou redirecionar o usuário
         } catch (error) {

@@ -9,7 +9,7 @@ function AulaForm() {
     const [selectedAula, setSelectedAula] = useState('');
 
     useEffect(() => {
-        axios.get('http://10.92.6.122:8000/api/aulas/')
+        axios.get('http://localhost:8000/api/aulas/')
             .then(res => {
                 setAulas(res.data);
             })
@@ -18,7 +18,7 @@ function AulaForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://10.92.6.122:8000/api/alocar_aula/', { aulaId: selectedAula })
+        axios.post('http://localhost:8000/api/alocar_aula/', { aulaId: selectedAula })
             .then(response => {
                 // Tratar a resposta, talvez atualizar o calendário
             })
