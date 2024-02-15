@@ -13,7 +13,7 @@ export default () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:8000/api/token/', {
+            const response = await axios.post('http://10.92.6.122:8000/api/token/', {
                 username: username,
                 password: password
             });

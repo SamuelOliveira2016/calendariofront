@@ -15,7 +15,7 @@ const AddAreaTecnologica = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/api/areastecnologicas/', areaTecnologica);
+            const response = await axios.post('http://10.92.6.122:8000/api/areastecnologicas/', areaTecnologica);
             console.log(response.data);
             // Resetar o formulário ou mostrar mensagem de sucesso
         } catch (error) {

@@ -13,7 +13,7 @@ const AddEventos = () => {
     const [calendarios, setCalendarios] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/calendario-academico/')
+        axios.get('http://10.92.6.122:8000/api/calendario-academico/')
             .then(res => {
                 console.log("Calendários acadêmicos carregados:", res.data);
                 setCalendarios(res.data);
@@ -33,7 +33,7 @@ const AddEventos = () => {
         e.preventDefault();
         console.log("Enviando dados do evento:", evento);
         try {
-            const response = await axios.post('http://localhost:8000/api/eventos/', evento);
+            const response = await axios.post('http://10.92.6.122:8000/api/eventos/', evento);
             console.log(response.data);
             // Resetar o formulário ou redirecionar o usuário
         } catch (error) {
