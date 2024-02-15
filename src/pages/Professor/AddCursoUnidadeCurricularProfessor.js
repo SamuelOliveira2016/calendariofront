@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import FormGroup from "../../components/Form/FormGroup";
 
 const AddCursoUnidadeCurricularProfessor = () => {
     // Estados para armazenar cursos, professores, e unidades curriculares
@@ -80,39 +81,59 @@ const AddCursoUnidadeCurricularProfessor = () => {
     
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Curso:
-                <select name="curso" value={selecao.curso} onChange={handleChange}>
-                    <option value="">Selecione um Curso</option>
+        <form className="row" onSubmit={handleSubmit}>
+            <div className='col-md-4'>
+                <FormGroup
+                    type="select"
+                    id="curso"
+                    name="curso"
+                    label="Curso"
+                    value={selecao.curso}
+                    funChange={handleChange}
+                >
+                    <option value="" disabled>Selecione um Curso</option>
                     {cursos.map(curso => (
                         <option key={curso.id} value={curso.id}>{curso.nome}</option>
                     ))}
-                </select>
-            </label>
+                </FormGroup>
+            </div>
 
-            <label>
-                Professor:
-                <select name="professor" value={selecao.professor} onChange={handleChange}>
-    <option value="">Selecione um Professor</option>
-    {professores.map(professor => (
-        <option key={professor.id} value={professor.id}>{professor.nome}</option>
-    ))}
-</select>
+            <div className='col-md-4'>
+                <FormGroup
+                    type="select"
+                    id="professor"
+                    name="professor"
+                    label="Professor"
+                    value={selecao.professor}
+                    funChange={handleChange}
+                >
+                    <option value="">Selecione um Professor</option>
+                    {professores.map(professor => (
+                        <option key={professor.id} value={professor.id}>{professor.nome}</option>
+                    ))}
+                </FormGroup>
+            </div>
 
-            </label>
 
-            <label>
-                Unidade Curricular:
-                <select name="unidadeCurricular" value={selecao.unidadeCurricular} onChange={handleChange}>
+            <div className='col-md-4'>
+                <FormGroup
+                    type="select"
+                    id="unidadeCurricular"
+                    name="unidadeCurricular"
+                    label="Unidade Curricular"
+                    value={selecao.unidadeCurricular}
+                    funChange={handleChange}
+                >
                     <option value="">Selecione uma Unidade Curricular</option>
                     {unidadesCurriculares.map(uc => (
                         <option key={uc.id} value={uc.id}>{uc.nome}</option>
                     ))}
-                </select>
-            </label>
+                </FormGroup>
+            </div>
 
-            <button type="submit">Adicionar Associação</button>
+            <div className="col-md-12">
+                <button className="btn btn-primary" type="submit">Adicionar Associação</button>
+            </div>
         </form>
     );
 };

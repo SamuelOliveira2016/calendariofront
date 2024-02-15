@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import FormGroup from "../../components/Form/FormGroup";
 
 const AddProfessor = () => {
     const [professor, setProfessor] = useState({
@@ -51,28 +52,47 @@ const AddProfessor = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-    Pessoa:
-    <select name="pessoa" value={professor.pessoa} onChange={handleChange}>
-        <option value="">Selecione uma Pessoa</option>
-        {pessoas.map(pessoa => (
-            <option key={pessoa.id} value={pessoa.id}>{pessoa.nome}</option>
-        ))}
-    </select>
-</label>
+        <form className="row" onSubmit={handleSubmit}>
+            <div className='col-md-12'>
+                <FormGroup
+                    type="select"
+                    id="pessoa"
+                    name="pessoa"
+                    label="Pessoa"
+                    value={professor.pessoa}
+                    funChange={handleChange}
+                >
+                    <option value="">Selecione uma Pessoa</option>
+                    {pessoas.map(pessoa => (
+                        <option key={pessoa.id} value={pessoa.id}>{pessoa.nome}</option>
+                    ))}
+                </FormGroup>
+            </div>
 
-<label>
-    NIF:
-    <input type="text" name="nif" value={professor.nif} onChange={handleChange} />
-</label>
 
-<label>
-    Nível:
-    <input type="text" name="nivel" value={professor.nivel} onChange={handleChange} />
-</label>
+            <div className='col-md-6'>
+                <FormGroup
+                    id="nif"
+                    name="nif"
+                    label="NIF"
+                    value={professor.nif}
+                    funChange={handleChange}
+                />
+            </div>
 
-       <button type="submit">Adicionar Professor</button>
+            <div className='col-md-6'>
+                <FormGroup
+                    id="nivel"
+                    name="nivel"
+                    label="Nível"
+                    value={professor.nivel}
+                    funChange={handleChange}
+                />
+            </div>
+
+            <div className='col-md-12'>
+                <button className="btn btn-primary" type="submit">Adicionar Professor</button>
+            </div>
         </form>
     );
 };
