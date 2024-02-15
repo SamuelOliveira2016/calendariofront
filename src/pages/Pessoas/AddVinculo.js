@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import FormGroup from "../../components/Form/FormGroup";
 
 const AddVinculo = () => {
     const [vinculo, setVinculo] = useState({
@@ -41,23 +42,44 @@ const AddVinculo = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <select name="vinculo" value={vinculo.vinculo} onChange={handleChange}>
-            <option value="">Selecione o Tipo de Vínculo</option>
-            <option value="horista">Horista</option>
-            <option value="prazo_indeter">Prazo Indeterminado</option>
-            <option value="temporario">Temporário</option>
-            <option value="prazo_determinado">Prazo Determinado</option>
-            {/* Outros tipos de vínculo */}
-        </select>
+        <form className="row" onSubmit={handleSubmit}>
+            <div className='col-md-6'>
+                <FormGroup
+                    type="select"
+                    id="vinculo"
+                    name="vinculo"
+                    label="Vinculo"
+                    value={vinculo.vinculo}
+                    funChange={handleChange}
+                >
+                    <option value="">Selecione o Tipo de Vínculo</option>
+                    <option value="horista">Horista</option>
+                    <option value="prazo_indeter">Prazo Indeterminado</option>
+                    <option value="temporario">Temporário</option>
+                    <option value="prazo_determinado">Prazo Determinado</option>
+                </FormGroup>
+            </div>
 
-            <select name="pessoa" value={vinculo.pessoa} onChange={handleChange}>
-                <option value="">Selecione a Pessoa</option>
-                {pessoas.map(pessoa => (
-                    <option key={pessoa.id} value={pessoa.id}>{pessoa.nome}</option>
-                ))}
-            </select>
-            <button type="submit">Adicionar Vínculo</button>
+
+            <div className='col-md-6'>
+                <FormGroup
+                    type="select"
+                    id="pessoa"
+                    name="pessoa"
+                    label="Pessoa"
+                    value={vinculo.pessoa}
+                    funChange={handleChange}
+                >
+                    <option value="">Selecione a Pessoa</option>
+                    {pessoas.map(pessoa => (
+                        <option key={pessoa.id} value={pessoa.id}>{pessoa.nome}</option>
+                    ))}
+                </FormGroup>
+            </div>
+
+            <div className="col-md-12">
+                <button className="btn btn-primary" type="submit">Adicionar Vínculo</button>
+            </div>
         </form>
     );
 };

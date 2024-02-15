@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import FormGroup from "../../components/Form/FormGroup";
 
 const AddPessoa = () => {
     const [pessoa, setPessoa] = useState({
@@ -24,29 +25,45 @@ const AddPessoa = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                name="nome"
-                value={pessoa.nome}
-                onChange={handleChange}
-                placeholder="Nome"
-            />
-            <input
-                type="text"
-                name="telefone"
-                value={pessoa.telefone}
-                onChange={handleChange}
-                placeholder="Telefone"
-            />
-            <input
-                type="email"
-                name="email"
-                value={pessoa.email}
-                onChange={handleChange}
-                placeholder="Email"
-            />
-            <button type="submit">Adicionar Pessoa</button>
+        <form className="row" onSubmit={handleSubmit}>
+            <div className='col-md-4'>
+                <FormGroup
+                    id="nome"
+                    name="nome"
+                    label="Nome"
+                    placeholder="Nome"
+                    value={pessoa.nome}
+                    funChange={handleChange}
+                />
+            </div>
+
+            <div className='col-md-4'>
+                <FormGroup
+                    type="tel"
+                    id="telefone"
+                    name="telefone"
+                    label="Telefone"
+                    placeholder="Informe seu telefone"
+                    value={pessoa.telefone}
+                    funChange={handleChange}
+                />
+            </div>
+
+            <div className='col-md-4'>
+                <FormGroup
+                    type="email"
+                    id="email"
+                    name="email"
+                    label="E-mail"
+                    placeholder="Informe seu e-mail"
+                    value={pessoa.email}
+                    funChange={handleChange}
+                />
+            </div>
+
+            <div className="col-md-12">
+                <button className="btn btn-primary" type="submit">Adicionar Pessoa</button>
+            </div>
         </form>
     );
 };

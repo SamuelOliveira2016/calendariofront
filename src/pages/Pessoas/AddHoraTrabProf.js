@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import FormGroup from "../../components/Form/FormGroup";
 
 const AddHoraTrabProf = () => {
     const [horatrabProf, setHoratrabProf] = useState({
@@ -62,57 +63,91 @@ const AddHoraTrabProf = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            {/* Seletor de Pessoa */}
-            <label>
-                Pessoa:
-                <select name="pessoa" value={horatrabProf.pessoa} onChange={handleChange}>
-                    <option value="">Selecione uma Pessoa</option>
-                    {pessoas.map(pessoa => (
-                        <option key={pessoa.id} value={pessoa.id}>{pessoa.nome}</option>
+        <form className="row" onSubmit={handleSubmit}>
+            <div className="col-md-3">
+                <div className="form-group">
+                    <label>Dias de Trabalho:</label>
+                    {/* Adicione checkboxes ou um seletor múltiplo para os dias da semana */}
+                    {/* Exemplo com checkboxes para cada dia */}
+                    {WEEKDAYS.map((day, index) => (
+                        <div key={index}>
+                            <input
+                                type="checkbox"
+                                name="selected_days"
+                                id={day[0]}
+                                value={day[0]}
+                                checked={horatrabProf.selected_days.includes(day[0])}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor={day[0]}>{day[1]}</label>
+                        </div>
                     ))}
-                </select>
-            </label>
-
-           {/* Horário Inicial */}
-    <label>
-        Horário de Início:
-        <input type="time" name="horatrabIni" value={horatrabProf.horatrabIni} onChange={handleChange} />
-    </label>
-
-    {/* Horário Final */}
-    <label>
-        Horário de Fim:
-        <input type="time" name="horatrabFim" value={horatrabProf.horatrabFim} onChange={handleChange} />
-    </label>
-
-    {/* Dias Selecionados */}
-    <label>
-        Dias de Trabalho:
-        {/* Adicione checkboxes ou um seletor múltiplo para os dias da semana */}
-        {/* Exemplo com checkboxes para cada dia */}
-        {WEEKDAYS.map((day, index) => (
-            <div key={index}>
-                <input
-                    type="checkbox"
-                    name="selected_days"
-                    value={day[0]}
-                    checked={horatrabProf.selected_days.includes(day[0])}
-                    onChange={handleChange}
-                />
-                {day[1]}
+                </div>
             </div>
-        ))}
-    </label>
 
-    {/* Quantidade de Horas por Mês */}
-    <label>
-        Quantidade de Horas por Mês:
-        <input type="number" name="quanthorames" value={horatrabProf.quanthorames} onChange={handleChange} />
-    </label>
+            <div className="col-md-9">
+                <div className="row">
+                    {/* Seletor de Pessoa */}
+                    <div className='col-md-12'>
+                        <FormGroup
+                            type="select"
+                            id="pessoa"
+                            name="pessoa"
+                            label="Pessoa"
+                            value={horatrabProf.pessoa}
+                            funChange={handleChange}
+                        >
+                            <option value="">Selecione uma Pessoa</option>
+                            {pessoas.map(pessoa => (
+                                <option key={pessoa.id} value={pessoa.id}>{pessoa.nome}</option>
+                            ))}
+                        </FormGroup>
+                    </div>
 
-    <button type="submit">Adicionar Horário de Trabalho</button>
-</form>
+                    {/* Horário Inicial */}
+                    <div className='col-md-6'>
+                        <FormGroup
+                            type="time"
+                            id="horatrabIni"
+                            name="horatrabIni"
+                            label="Horário de Início"
+                            value={horatrabProf.horatrabIni}
+                            funChange={handleChange}
+                        />
+                    </div>
+
+                    {/* Horário Final */}
+                    <div className='col-md-6'>
+                        <FormGroup
+                            type="time"
+                            id="horatrabFim"
+                            name="horatrabFim"
+                            label="Horário de Fim"
+                            value={horatrabProf.horatrabFim}
+                            funChange={handleChange}
+                        />
+                    </div>
+
+                    {/* Quantidade de Horas por Mês */}
+                    <div className='col-md-12'>
+                        <FormGroup
+                            type="number"
+                            id="quanthorames"
+                            name="quanthorames"
+                            label="Quantidade de Horas por Mês"
+                            value={horatrabProf.quanthorames}
+                            funChange={handleChange}
+                        />
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div className="col-md-12">
+                <button className="btn btn-primary" type="submit">Adicionar Horário de Trabalho</button>
+            </div>
+        </form>
     );
 };
 
