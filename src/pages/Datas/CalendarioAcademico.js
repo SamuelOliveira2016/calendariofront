@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import FormGroup from "../../components/Form/FormGroup";
 
 const CalendarioAcademicoForm = () => {
     const [calendario, setCalendario] = useState({
@@ -41,49 +42,71 @@ const CalendarioAcademicoForm = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
+        <form className="row" onSubmit={handleSubmit}>
+            <div className='col-md-4'>
+                <FormGroup
+                    id="nome"
                     name="nome"
+                    label="Nome do Calendário"
                     value={calendario.nome}
-                    onChange={handleChange}
-                    placeholder="Nome do Calendário"
+                    funChange={handleChange}
                 />
-                <input
+            </div>
+
+            <div className='col-md-4'>
+                <FormGroup
                     type="number"
+                    id="ano_letivo"
                     name="ano_letivo"
+                    label="Ano Letivo"
                     value={calendario.ano_letivo}
-                    onChange={handleChange}
-                    placeholder="Ano Letivo"
+                    funChange={handleChange}
                 />
-                <input
+            </div>
+
+            <div className='col-md-4'>
+                <FormGroup
                     type="number"
+                    id="semestre"
                     name="semestre"
+                    label="Semestre"
                     value={calendario.semestre}
-                    onChange={handleChange}
-                    placeholder="Semestre"
+                    funChange={handleChange}
                 />
-                <input
+            </div>
+
+            <div className='col-md-6'>
+                <FormGroup
                     type="date"
+                    id="inicio"
                     name="inicio"
+                    label="Início"
                     value={calendario.inicio}
-                    onChange={handleChange}
-                    placeholder="Início"
+                    funChange={handleChange}
                 />
-                <input
+            </div>
+
+            <div className='col-md-6'>
+                <FormGroup
                     type="date"
+                    id="termino"
                     name="termino"
+                    label="Término"
                     value={calendario.termino}
-                    onChange={handleChange}
-                    placeholder="Término"
+                    funChange={handleChange}
                 />
-                <button type="submit">{editId ? 'Atualizar Calendário' : 'Adicionar Calendário'}</button>
-            </form>
-            {editId && (
-                <button onClick={handleDelete}>Excluir Calendário</button>
-            )}
-        </div>
+            </div>
+
+            <div className="col-md-12">
+                <button className="btn btn-primary" type="submit">
+                    {editId ? 'Atualizar Calendário' : 'Adicionar Calendário'}
+                </button>
+
+                {editId && (
+                    <button className="btn btn-secondary" onClick={handleDelete}>Excluir Calendário</button>
+                )}
+            </div>
+        </form>
     );
 };
 

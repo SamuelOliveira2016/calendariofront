@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import FormGroup from "../../components/Form/FormGroup";
 
 const AddEventos = () => {
     const [evento, setEvento] = useState({
@@ -41,51 +42,72 @@ const AddEventos = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="row" onSubmit={handleSubmit}>
             {/* Nome do Evento */}
-            <label>
-                Nome do Evento:
-                <input type="text" name="nome" value={evento.nome} onChange={handleChange} />
-            </label>
+            <div className='col-md-4'>
+                <FormGroup
+                    id="nome"
+                    name="nome"
+                    label="Nome do Evento"
+                    value={evento.nome}
+                    funChange={handleChange}
+                />
+            </div>
 
-            {/* Data de Início */}
-            <label>
-                Data de Início:
-                <input type="date" name="data_inicio" value={evento.data_inicio} onChange={handleChange} />
-            </label>
+            <div className='col-md-4'>
+                <FormGroup
+                    type="date"
+                    id="data_inicio"
+                    name="data_inicio"
+                    label="Data de Início"
+                    value={evento.data_inicio}
+                    funChange={handleChange}
+                />
+            </div>
 
-            {/* Data de Fim */}
-            <label>
-                Data de Fim:
-                <input type="date" name="data_fim" value={evento.data_fim} onChange={handleChange} />
-            </label>
+            <div className='col-md-4'>
+                <FormGroup
+                    type="date"
+                    id="data_fim"
+                    name="data_fim"
+                    label="Data de Fim"
+                    value={evento.data_fim}
+                    funChange={handleChange}
+                />
+            </div>
 
-            {/* Descrição */}
-            <label>
-                Descrição:
-                <textarea name="descricao" value={evento.descricao} onChange={handleChange}></textarea>
-            </label>
+            <div className='col-md-12'>
+                <FormGroup
+                    type="select"
+                    id="calendario_academico"
+                    name="calendario_academico"
+                    label="Calendário Acadêmico"
+                    value={evento.descricao}
+                    funChange={handleChange}
+                >
+                    <option value="">Selecione um Calendário</option>
+                    {calendarios.map(calendario => (
+                        <option key={calendario.id} value={calendario.id}>
+                            {calendario.nome}
+                        </option>
+                    ))}
+                </FormGroup>
+            </div>
 
-            {/* Seletor de Calendário Acadêmico */}
-<label>
-    Calendário Acadêmico:
-    <select 
-    name="calendario_academico" 
-    value={evento.calendario_academico} 
-    onChange={handleChange}
->
-    <option value="">Selecione um Calendário</option>
-    {calendarios.map(calendario => (
-        <option key={calendario.id} value={calendario.id}>
-            {calendario.nome}
-        </option>
-    ))}
-</select>
+            <div className='col-md-12'>
+                <FormGroup
+                    type="textarea"
+                    id="descricao"
+                    name="descricao"
+                    label="Descrição"
+                    value={evento.descricao}
+                    funChange={handleChange}
+                />
+            </div>
 
-</label>
-
-
-            <button type="submit">Adicionar Evento</button>
+            <div className="col-md-12">
+                <button className="btn btn-primary" type="submit">Adicionar Evento</button>
+            </div>
         </form>
     );
 };

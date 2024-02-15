@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import FormGroup from "../../components/Form/FormGroup";
 
 const AddAula = () => {
     const [aula, setAula] = useState({
@@ -65,54 +66,78 @@ const AddAula = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="row" onSubmit={handleSubmit}>
             {/* ... campos de seleção e horários ... */}
-            <select name="curso_uc_professor" value={aula.curso_uc_professor} onChange={handleChange}>
-    <option value="">Selecione o Curso/UC/Professor</option>
-    {cursoUCProfessores.map((item, index) => (
-        <option key={`${item.curso.id}-${item.unidadeCurricular.id}-${index}`} value={item.id}>
-        {`${item.curso.nome} - ${item.unidadeCurricular.nome} - Professor: ${item.professor && item.professor.pessoa ? item.professor.pessoa.nome : "Não definido"}`}
-    </option>
-    
-    ))}
-</select>
+            <div className='col-md-6'>
+                <FormGroup
+                    type="select"
+                    id="curso_uc_professor"
+                    name="curso_uc_professor"
+                    label="Selecione o Curso/UC/Professor"
+                    value={aula.curso_uc_professor}
+                    funChange={handleChange}
+                >
+                    <option value="">Selecione o Curso/UC/Professor</option>
+                    {cursoUCProfessores.map((item, index) => (
+                        <option key={`${item.curso.id}-${item.unidadeCurricular.id}-${index}`} value={item.id}>
+                            {`${item.curso.nome} - ${item.unidadeCurricular.nome} - Professor: ${item.professor && item.professor.pessoa ? item.professor.pessoa.nome : "Não definido"}`}
+                        </option>
+
+                    ))}
+                </FormGroup>
+            </div>
+
+            <div className='col-md-6'>
+                <FormGroup
+                    type="select"
+                    id="infraestrutura"
+                    name="infraestrutura"
+                    label="Selecione a Infraestrutura"
+                    value={aula.infraestrutura}
+                    funChange={handleChange}
+                >
+                    <option value="">Selecione a Infraestrutura</option>
+                    {infraestruturas.map(infra => (
+                        // Supondo que cada 'infra' tenha um campo 'id' único
+                        <option key={infra.id} value={infra.id}>{infra.nome}</option>
+                    ))}
+                </FormGroup>
+            </div>
 
 
-            <select name="infraestrutura" value={aula.infraestrutura} onChange={handleChange}>
-                <option value="">Selecione a Infraestrutura</option>
-                {infraestruturas.map(infra => (
-                    // Supondo que cada 'infra' tenha um campo 'id' único
-                    <option key={infra.id} value={infra.id}>{infra.nome}</option>
-    ))}
-</select>
+            <div className='col-md-6'>
+                <FormGroup
+                    type="time"
+                    id="horario_inicio"
+                    name="horario_inicio"
+                    label="Horário de Início"
+                    value={aula.horario_inicio}
+                    funChange={handleChange}
+                />
+            </div>
 
-<label htmlFor="horario_inicio">Horário de Início:</label>
-            <input 
-                type="time" 
-                id="horario_inicio" 
-                name="horario_inicio" 
-                value={aula.horario_inicio} 
-                onChange={handleChange} 
-            />
-
-            <label htmlFor="horario_fim">Horário de Fim:</label>
-            <input 
-                type="time" 
-                id="horario_fim" 
-                name="horario_fim" 
-                value={aula.horario_fim} 
-                onChange={handleChange} 
-            />
+            <div className='col-md-6'>
+                <FormGroup
+                    type="time"
+                    id="horario_fim"
+                    name="horario_fim"
+                    label="Horário de Fim"
+                    value={aula.horario_fim}
+                    funChange={handleChange}
+                />
+            </div>
 
             {aula.curso_uc_professor && (
-                <div>
+                <div className="col-md-12">
                     <p>Horas em Sala de Aula: {horasDetalhes.horasSalaAula}</p>
                     <p>Horas em Laboratório: {horasDetalhes.horasLaboratorio}</p>
                     <p>Horas em Oficina: {horasDetalhes.horasOficina}</p>
                 </div>
             )}
 
-            <button type="submit">Criar Aula</button>
+            <div className="col-md-12">
+                <button className="btn btn-primary" type="submit">Criar Aula</button>
+            </div>
         </form>
     );
 };
