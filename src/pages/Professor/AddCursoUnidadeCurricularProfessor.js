@@ -15,17 +15,17 @@ const AddCursoUnidadeCurricularProfessor = () => {
 
     // Carregar cursos e professores ao montar o componente
     useEffect(() => {
-        axios.get('http://localhost:8000/api/cursos/')
+        axios.get('http://10.92.6.122:8000/api/cursos/')
             .then(res => setCursos(res.data))
             .catch(err => console.error("Erro ao carregar cursos", err));
 
-        axios.get('http://localhost:8000/api/professores/')
+        axios.get('http://10.92.6.122:8000/api/professores/')
             .then(res => setProfessores(res.data))
             .catch(err => console.error("Erro ao carregar professores", err));
     }, []);
 
     const carregarUnidadesCurriculares = (cursoId) => {
-        axios.get(`http://localhost:8000/api/curso-uc-professor/${cursoId}/`)
+        axios.get(`http://10.92.6.122:8000/api/curso-uc-professor/${cursoId}/`)
             .then(res => setUnidadesCurriculares(res.data))
             .catch(err => console.error("Erro ao carregar unidades curriculares", err));
     };
@@ -69,7 +69,7 @@ const AddCursoUnidadeCurricularProfessor = () => {
         console.log("Enviando dados:", dataParaEnviar); // Para depuração
     
         try {
-            const response = await axios.post('http://localhost:8000/api/curso-uc-professor/', dataParaEnviar);
+            const response = await axios.post('http://10.92.6.122:8000/api/curso-uc-professor/', dataParaEnviar);
             console.log("Associação adicionada:", response.data);
         } catch (error) {
             console.error('Erro ao adicionar associação', error);

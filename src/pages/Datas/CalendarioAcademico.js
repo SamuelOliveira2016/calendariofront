@@ -20,8 +20,8 @@ const CalendarioAcademicoForm = () => {
         e.preventDefault();
         try {
             const response = editId 
-                ? await axios.put(`http://localhost:8000/api/calendario-academico/${editId}/`, calendario)
-                : await axios.post('http://localhost:8000/api/calendario-academico/', calendario);
+                ? await axios.put(`http://10.92.6.122:8000/api/calendario-academico/${editId}/`, calendario)
+                : await axios.post('http://10.92.6.122:8000/api/calendario-academico/', calendario);
             console.log('Resposta:', response.data);
             // Limpa o formulário após a operação
             setCalendario({ nome: '', ano_letivo: '', semestre: '', inicio: '', termino: '' });
@@ -33,7 +33,7 @@ const CalendarioAcademicoForm = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://localhost:8000/calendario-academico/${editId}/`);
+            await axios.delete(`http://10.92.6.122:8000/calendario-academico/${editId}/`);
             console.log('Calendário Acadêmico excluído com sucesso.');
             setEditId(null);
         } catch (error) {

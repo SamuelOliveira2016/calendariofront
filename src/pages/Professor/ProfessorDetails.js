@@ -9,7 +9,7 @@ const ProfessorDetails = () => {
 
     // Carregar professores ao montar o componente
     useEffect(() => {
-        axios.get('http://localhost:8000/api/professores/')
+        axios.get('http://10.92.6.122:8000/api/professores/')
             .then(res => setProfessores(res.data))
             .catch(err => console.error("Erro ao carregar professores", err));
     }, []);
@@ -17,7 +17,7 @@ const ProfessorDetails = () => {
     // Carregar detalhes do professor quando um é selecionado
     useEffect(() => {
         if (selectedProfessorId) {
-            axios.get(`http://localhost:8000/api/professor-details/${selectedProfessorId}/`)
+            axios.get(`http://10.92.6.122:8000/api/professor-details/${selectedProfessorId}/`)
                 .then(res => setDetalhesProfessor(res.data))
                 .catch(err => console.error("Erro ao carregar detalhes do professor", err));
         }

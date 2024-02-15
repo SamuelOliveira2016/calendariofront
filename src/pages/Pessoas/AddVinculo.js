@@ -10,7 +10,7 @@ const AddVinculo = () => {
     const [pessoas, setPessoas] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/pessoas/')
+        axios.get('http://10.92.6.122:8000/api/pessoas/')
             .then(res => {
                 setPessoas(res.data);
             })
@@ -33,7 +33,7 @@ const AddVinculo = () => {
         e.preventDefault();
         console.log('Enviando vínculo:', vinculo);
         try {
-            await axios.post('http://localhost:8000/api/vinculos/', vinculo);
+            await axios.post('http://10.92.6.122:8000/api/vinculos/', vinculo);
             // Adicione a lógica para lidar com a resposta bem-sucedida
         } catch (error) {
             console.error('Houve um erro ao enviar os dados', error);
